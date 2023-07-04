@@ -1,0 +1,7 @@
+{
+  "name": "aabb-code-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
