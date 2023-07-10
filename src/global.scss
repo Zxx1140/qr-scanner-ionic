@@ -45,20 +45,13 @@ body.qrscanner .scanner-hide {
     visibility: hidden;
 }
 
-ion-icon {
-    color: rgb(33, 58, 109);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300&display=swap');
+
+@font-face {
+    font-family: 'Noto Sans Thai', sans-serif;
+    ; //This is what we are going to call
+    src: url('./assets/fonts/NotoSansThai-VariableFont_wdth\,wght.ttf');
 }
 
-ion-toolbar {
-    background-color: rgb(48, 45, 94);
-    color: #ffffff;
-    text-align: center;
-}
-
-ion-tab-bar {
-
-    --background: var(--ion-tabbar-background-color, #f7f7f7);
-
-
-
-}
+@import 'swiper/scss';
+@import '@ionic/angular/css/ionic-swiper';

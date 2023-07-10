@@ -1,48 +1,51 @@
-<ion-header class="scanner-hide">
-  <ion-toolbar color="#">
-    <ion-title>
-      QR Code
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="scanner-hide">
+<ion-content>
 
-  <ion-card class="ion-text-center">
-    <ion-card-content>
-      <qrcode [qrdata]="qrCodeString" [width]="256" [errorCorrectionLevel]="'M'">
-      </qrcode>
-    </ion-card-content>
-  </ion-card>
-  <ion-item *ngIf="scannedResult">
-    <ion-label class="ion-text-wrap">Scanned Result: {{scannedResult}}</ion-label>
-  </ion-item>
+    <swiper-container #swiper (afterinit)="SwiperReady()" (slidechange)="swiperSlideChange($event)" [loop]="true"
+        [pagination]="true" [zoom]="true" [autoplay]="true" [disableOnInteraction]="true">
 
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="Store">
-        <ion-icon name="storefront-outline"></ion-icon>
-      </ion-tab-button>
-      <ion-tab-button (click)="startScan()">
-        <ion-icon name="qr-code-sharp"></ion-icon>
-      </ion-tab-button>
-      <ion-tab-button tab="account">
-        <ion-icon name="person"></ion-icon>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+        <swiper-slide *ngFor="let  image of images">
+
+            <div class="swiper-zoom-container">
+                <img class="cropped-image" [src]="image">
+            </div>
+        </swiper-slide>
+
+    </swiper-container>
+
+    <p style="text-align: center;color: black;font-family: 'Noto Sans Thai' !important; font-size: 28px;">
+        เลือกจองคิวเลย</p>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6">
+                <ion-card>
+                    <div class="radius">
+                        <ion-icon name="restaurant-outline"></ion-icon>
+                    </div>
+                    <!-- <ion-card-title>Card Title</ion-card-title> -->
+                </ion-card>
+            </ion-col>
+            <ion-col size="6">
+                <ion-card>
+                    <div class="radius">
+                        <ion-icon name="restaurant-outline"></ion-icon>
+                    </div>
+                </ion-card>
+            </ion-col>
+            <ion-col size="6">
+                <ion-card>
+                    <div class="radius">
+                        <ion-icon name="restaurant-outline"></ion-icon>
+                    </div>
+                </ion-card>
+            </ion-col>
+            <ion-col size="6">
+                <ion-card>
+                    <div class="radius">
+                        <ion-icon name="restaurant-outline"></ion-icon>
+                    </div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
-
-
-<div class="scanner-ui" style=" 
-            background-color: transparent;
-            background-repeat: no-repeat;
-            border: none; 
-            text-align: center;">
-
-
-  <ion-button color="danger" style=" width: 90px; height: 40px;" (click)="stopScan()">
-    <ion-icon name="close-circle-outline" style="width: 65px; height: 40px;"></ion-icon>
-  </ion-button>
-
-
-</div>

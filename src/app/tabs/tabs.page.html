@@ -1,0 +1,64 @@
+<ion-header class="scanner-hide">
+  <ion-title>
+    <div class="Queue">
+      <p style="color: red; background-color: #ffff;border-radius: 50%; width: 41px; text-align: center; ">D</p>
+      <p>Queue</p>
+    </div>
+    <div class="QueueSystem">
+      <p style="font-family: 'Noto Sans Thai' !important; font-size: 15px;">
+        ระบบจองคิวออนไลน์</p>
+    </div>
+  </ion-title>
+</ion-header>
+<!-- <ion-buttons slot="end" style="position: absolute; top: 10px; right: 65px;">
+    <ion-icon name="notifications-outline" style="height: 40px;width: 25px;"></ion-icon>
+  </ion-buttons> -->
+
+
+
+<ion-content class=" scanner-hide">
+
+  <!-- <ion-card class="ion-text-center">
+    <ion-card-content>
+      <qrcode [qrdata]="qrCodeString" [width]="256" [errorCorrectionLevel]="'M'">
+      </qrcode>
+    </ion-card-content>
+  </ion-card> -->
+  <ion-item *ngIf="scannedResult">
+    <ion-label class="ion-text-wrap">Scanned Result: {{scannedResult}}</ion-label>
+  </ion-item>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" style="height: 70px;">
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>
+      </ion-tab-button>
+
+      <div style="border-radius: 100% ; background-color: rgb(255, 255, 255);
+            width: 70px; height: 70px;">
+        <ion-tab-button (click)="startScan()">
+          <ion-icon style="color: rgb(62, 125, 219); width: 90px; height: 50px;" name="qr-code-sharp"></ion-icon>
+        </ion-tab-button>
+      </div>
+
+      <ion-tab-button tab="profile">
+        <ion-icon name="person"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
+
+
+<div class="scanner-ui" style=" 
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: none; 
+            text-align: center;">
+
+
+  <ion-button fill="solid" color="danger" style=" width: 90px; height: 40px;" (click)="stopScan()">
+    <ion-icon name="close-circle-outline" style="color: rgb(255, 255, 255); width: 65px; height: 40px;"></ion-icon>
+  </ion-button>
+
+
+</div>

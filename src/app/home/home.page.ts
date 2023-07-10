@@ -1,22 +1,56 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import Swiper from 'swiper';
+import { SwiperOptions } from 'swiper/types';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+
 })
-export class HomePage implements AfterViewInit, OnDestroy {
+export class HomePage implements AfterViewInit, OnDestroy, OnInit {
+  @ViewChild('swiper')
+  swiperRef: ElementRef | undefined;
+  swiper?: Swiper;
+  images = [
+    'assets/images/1.jpg',
+    'assets/images/2.jpg',
+    'assets/images/3.jpg',
+    'assets/images/4.jpg',
+  ];
+
+
 
   qrCodeString = 'This is a secret qr code message';
   scannedResult: any;
 
 
+  swiperSlideChange(e: any) {
+    console.log('change', e);
+  }
+
 
   constructor() { }
-  ngAfterViewInit(): void {
+
+  SwiperReady() {
+    this.swiper = this.swiperRef?.nativeElement.swiper;
+
 
   }
+
+  swiperSlideChang(e: any) {
+    console.log('change: ', e);
+  }
+
+  ngOnInit(): void {
+
+  }
+  ngAfterViewInit(): void {
+
+
+  }
+
 
   async checkPermission() {
     try {
@@ -69,6 +103,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.stopScan();
+
   }
 
 
